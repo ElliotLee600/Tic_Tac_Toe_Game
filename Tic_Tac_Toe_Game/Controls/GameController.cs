@@ -14,6 +14,7 @@ namespace Tic_Tac_Toe_Game.Controls
     {
 
         private static GameController gameController;
+        private static readonly Object syncLock = new Object();
 
 
         public GameController() { }
@@ -22,7 +23,7 @@ namespace Tic_Tac_Toe_Game.Controls
         {
             if (gameController == null)
             {
-                lock (gameController)
+                lock (syncLock)
                 {
                     if (gameController == null)
                     {
