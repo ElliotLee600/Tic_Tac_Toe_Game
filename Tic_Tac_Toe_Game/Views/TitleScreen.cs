@@ -19,5 +19,10 @@ namespace Tic_Tac_Toe_Game
         {
             titleScreenController = TitleScreenController.getTitleScreenController();
         }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            titleScreenController.createGameScreen();
+        }
     }
 }

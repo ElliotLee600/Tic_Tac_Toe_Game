@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tic_Tac_Toe_Game.Views;
 
 namespace Tic_Tac_Toe_Game.Controls
 {
@@ -27,6 +28,11 @@ namespace Tic_Tac_Toe_Game.Controls
                 }
             }
             return titleScreenController;
+        }
+
+        public void createGameScreen() { 
+            GameScreen gameScreen = new GameScreen();
+            gameScreen.ShowDialog();
         }
     }
 }
