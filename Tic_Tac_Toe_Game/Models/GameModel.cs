@@ -13,7 +13,7 @@ namespace Tic_Tac_Toe_Game.Models
      * Acts as the central game model.
      * Implemented using the singleton design pattern.
      */
-    internal class GameModel : IPublisher
+    public class GameModel : IPublisher
     {
         private int[,] board; //1 means x, 0 means empty, -1 means 0.
         private AI_MoveType opponentMoveType;

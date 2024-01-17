@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Tic_Tac_Toe_Game.Utils
 {
     //Utility class used to easily store the 2 coordinates of a move.
-    internal class Move
+    public class Move
     {
         public int row;
         public int col;
@@ -16,6 +16,18 @@ namespace Tic_Tac_Toe_Game.Utils
         {
             this.row = row;
             this.col = col;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is Move) {
+                Move otherMove = (Move)obj;
+                if (otherMove.row == this.row && otherMove.col == this.col)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

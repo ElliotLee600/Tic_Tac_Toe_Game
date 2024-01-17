@@ -10,7 +10,7 @@ namespace Tic_Tac_Toe_Game.Controls
      * Implemented using the singleton design pattern.
      * 
      */
-    internal class GameController
+    public class GameController
     {
 
         private static GameController gameController;

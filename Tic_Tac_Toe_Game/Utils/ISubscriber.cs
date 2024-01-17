@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tic_Tac_Toe_Game.Utils
 {
-    internal interface ISubscriber
+    public interface ISubscriber
     {
         public void update();
 

@@ -7,7 +7,7 @@ using Tic_Tac_Toe_Game.Utils;
 
 namespace Tic_Tac_Toe_Game.Models.MoveTypes
 {
-    internal class MediumAI_MoveType : AI_MoveType
+    public class MediumAI_MoveType : AI_MoveType
     {
         public const int MEDIUM_ID = 1;
         public MediumAI_MoveType() { }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tic_Tac_Toe_Game.Utils
 {
-    internal interface IPublisher
+    public interface IPublisher
     {
         public void addSubscriber(ISubscriber subscriber);
         public void removeSubscriber(ISubscriber subscriber);

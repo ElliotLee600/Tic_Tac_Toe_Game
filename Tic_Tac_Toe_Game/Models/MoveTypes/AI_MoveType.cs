@@ -7,7 +7,7 @@ using Tic_Tac_Toe_Game.Utils;
 
 namespace Tic_Tac_Toe_Game.Models.MoveTypes
 {
-    internal abstract class AI_MoveType : IMoveType
+    public abstract class AI_MoveType : IMoveType
     {
         public static Random rand = new Random();
         public abstract Move getMove(int[,] board, int turn);

@@ -7,7 +7,7 @@ using Tic_Tac_Toe_Game.Views;
 
 namespace Tic_Tac_Toe_Game.Controls
 {
-    internal class TitleScreenController
+    public class TitleScreenController
     {
         private static TitleScreenController titleScreenController;
         private static readonly Object syncLock = new Object();

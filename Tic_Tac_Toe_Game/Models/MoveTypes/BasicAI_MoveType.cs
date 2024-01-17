@@ -9,7 +9,7 @@ using Tic_Tac_Toe_Game.Utils;
 
 namespace Tic_Tac_Toe_Game.Models.MoveTypes
 {
-    internal class BasicAI_MoveType : AI_MoveType
+    public class BasicAI_MoveType : AI_MoveType
     {
 
         public const int BASIC_ID = 0;

@@ -7,7 +7,7 @@ using Tic_Tac_Toe_Game.Utils;
 
 namespace Tic_Tac_Toe_Game.Models.MoveTypes
 {
-    internal interface IMoveType
+    public interface IMoveType
     {
         public Move getMove(int[,] board, int turn);
     }
