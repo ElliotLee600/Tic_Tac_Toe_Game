@@ -28,18 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            difficultySetBtn = new Button();
             SuspendLayout();
+            // 
+            // difficultySetBtn
+            // 
+            difficultySetBtn.Location = new Point(652, 25);
+            difficultySetBtn.Name = "difficultySetBtn";
+            difficultySetBtn.Size = new Size(122, 29);
+            difficultySetBtn.TabIndex = 0;
+            difficultySetBtn.Text = "Set Difficulty";
+            difficultySetBtn.UseVisualStyleBackColor = true;
+            difficultySetBtn.Click += difficultySetBtn_Click;
             // 
             // GameScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(difficultySetBtn);
             Name = "GameScreen";
             Text = "Tic-Tac-Toe Game Screen";
+            Load += GameScreen_Load;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Button difficultySetBtn;
     }
 }

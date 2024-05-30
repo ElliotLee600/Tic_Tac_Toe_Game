@@ -10,19 +10,20 @@ namespace Tic_Tac_Toe_Game.Controls
     public class TitleScreenController
     {
         private static TitleScreenController titleScreenController;
-        private static readonly Object syncLock = new Object();
+        private static readonly Object initLock = new Object();
 
 
-        public TitleScreenController() { }
+        private TitleScreenController() { }
 
         public static TitleScreenController getTitleScreenController()
         {
             if (titleScreenController == null)
             {
-                lock (syncLock)
+                lock (initLock)
                 {
                     if (titleScreenController == null)
                     {
+                        //We only want exactly one TitleScreenController.
                         titleScreenController = new TitleScreenController();
                     }
                 }

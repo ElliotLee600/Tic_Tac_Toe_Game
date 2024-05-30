@@ -8,6 +8,7 @@ namespace Tic_Tac_Toe_Game
         public TitleScreen()
         {
             InitializeComponent();
+            titleScreenController = TitleScreenController.getTitleScreenController();
         }
 
         private void TitleScreen_Load(object sender, EventArgs e)

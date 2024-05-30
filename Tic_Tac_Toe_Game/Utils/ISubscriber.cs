@@ -10,6 +10,10 @@ namespace Tic_Tac_Toe_Game.Utils
     {
         public void update();
 
-        public Boolean isActive();
+        public Boolean isActive() {
+            return false;
+        }
+
+        public void setActive(Boolean newActive);
     }
 }
