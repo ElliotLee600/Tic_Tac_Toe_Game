@@ -47,7 +47,7 @@ namespace Tic_Tac_Toe_Game.Views
         {
             if (this.EasyDiffBtn.Checked || this.MediumDiffBtn.Checked || this.HardDiffBtn.Checked) {
 
-                IMoveType moveType = null;
+                AI_MoveType moveType = null;
                 if (this.EasyDiffBtn.Checked)
                 {
                     moveType = new BasicAI_MoveType();

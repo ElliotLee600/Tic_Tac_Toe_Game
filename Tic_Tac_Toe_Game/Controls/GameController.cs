@@ -20,13 +20,13 @@ namespace Tic_Tac_Toe_Game.Controls
         private static readonly Object initLock = new Object();
         Rectangle workingRect; //has dimensions of main display.
 
-        private Player computerPlayer;
-        private Player humanPlayer;
+        //private Player computerPlayer;
+        //private Player humanPlayer;
 
         private GameController() {
             workingRect = Screen.PrimaryScreen.WorkingArea;
-            computerPlayer = new Player(new MediumAI_MoveType(), 0);
-            humanPlayer = new Player(new Player_MoveType(), 1);
+            //computerPlayer = new Player(new MediumAI_MoveType(), 0);
+            //humanPlayer = new Player(new Player_MoveType(), 1);
 
         }
 
@@ -53,8 +53,9 @@ namespace Tic_Tac_Toe_Game.Controls
 
         }
 
-        public void setComputerDifficulty(IMoveType moveType) {
-            computerPlayer.setMoveType(moveType);
+        public void setComputerDifficulty(AI_MoveType moveType) {
+            GameModel.getGameModel().setOpponentMoveType(moveType);
+           //computerPlayer.setMoveType(moveType);
         }
     }
 }

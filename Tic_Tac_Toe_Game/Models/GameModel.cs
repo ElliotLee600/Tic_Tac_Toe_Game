@@ -77,7 +77,7 @@ namespace Tic_Tac_Toe_Game.Models
             return board;
         }
 
-        private void setOpponentMoveType(AI_MoveType gMoveType) { 
+        public void setOpponentMoveType(AI_MoveType gMoveType) { 
             opponentMoveType = gMoveType;
         }
     }

@@ -18,6 +18,8 @@ namespace Tic_Tac_Toe_Game.Utils
             this.col = col;
         }
 
+       
+
         public override bool Equals(object? obj)
         {
             if (obj is Move) {

@@ -18,6 +18,9 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
 
         public Move[] possibleMoves(int[,] board, int turn)
         {
+            if (turn > 9) {
+                return null;
+            }
             Move[] pMoves = new Move[board.Length - turn + 1]; //Turn starts at 1.
             int counter = 0;
             for (int i = 0; i < board.GetLength(0); i++)
