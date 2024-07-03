@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tic_Tac_Toe_Game.Models;
 using Tic_Tac_Toe_Game.Models.MoveTypes;
+using Tic_Tac_Toe_Game.Utils;
 using Tic_Tac_Toe_Game.Views;
 
 namespace Tic_Tac_Toe_Game.Controls
@@ -51,6 +52,15 @@ namespace Tic_Tac_Toe_Game.Controls
             DifficultyForm difficultyForm = new DifficultyForm();
             difficultyForm.ShowDialog();
 
+        }
+
+
+        public Boolean processGridClick(Move gridPos) { 
+            return GameModel.getGameModel().tryBoardPosition(gridPos);
+        }
+
+        public void resetGame() { 
+            GameModel.getGameModel().resetGame();
         }
 
         public void setComputerDifficulty(AI_MoveType moveType) {
