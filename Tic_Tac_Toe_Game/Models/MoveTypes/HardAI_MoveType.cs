@@ -83,9 +83,9 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
         }
 
         public int minimax_min(int[,] board, int symbol, int turn) {
-            int eval = checkBoard(board, symbol * -1);
+            int eval = checkBoard(board, symbol * -1); //-1 is so board is evaluated from starting player's perspective
             if (eval != 0) {
-                return eval;
+                return eval; //nonzero eval means game should be over, regardless of how full board is.
             }
             int currentMin = 10;
             int temp;
@@ -106,10 +106,10 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
         {
             int currentMax = -10;
             int temp;
-            int eval = checkBoard(board, symbol * 1);
+            int eval = checkBoard(board, symbol);
             if (eval != 0)
             {
-                return eval;
+                return eval; //nonzero eval means game should be over, regardless of how full board is.
             }
             Move[] moves = possibleMoves(board, turn);
             if (moves == null)

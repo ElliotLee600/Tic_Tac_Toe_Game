@@ -12,4 +12,10 @@
     <Folder Include="Views\Sprites\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Views\Sprites\ttt_background_default.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

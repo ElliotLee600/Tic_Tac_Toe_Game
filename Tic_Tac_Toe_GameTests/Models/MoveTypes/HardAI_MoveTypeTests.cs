@@ -34,6 +34,19 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes.Tests
             Move expectedMove = new Move(0, 2);
             HardAI_MoveType hard = new HardAI_MoveType();
             Assert.AreEqual(expectedMove, hard.getMove(board, turn));
+            
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    board[i, j] = 0;
+                }
+            }
+            board[1, 1] = 1;
+            turn = 2;
+            expectedMove = new Move(0, 2);
+            Assert.AreEqual(expectedMove, hard.getMove(board, turn));
+
         }
         /*
         [TestMethod()]

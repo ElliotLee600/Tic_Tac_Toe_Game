@@ -57,7 +57,7 @@ namespace Tic_Tac_Toe_Game.Views
                     moveType = new MediumAI_MoveType();
                 }
                 else {
-                    moveType = new MediumAI_MoveType(); //TODO: Change to Hard when added.
+                    moveType = new HardAI_MoveType(); 
                 }
 
                 gameController.setComputerDifficulty(moveType);
