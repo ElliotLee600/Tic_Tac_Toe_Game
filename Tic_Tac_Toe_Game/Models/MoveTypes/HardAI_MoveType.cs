@@ -60,7 +60,7 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
             return newboard;
         }
 
-        public int checkBoard(int[,] board, int symbol) {
+        public static int checkBoard(int[,] board, int symbol) {
             for (int i = 0; i < 3; i++) {
                 if (board[i, 0] == board[i, 1] && board[i, 0] == board[i, 2] && board[i, 0] != 0) {
                     return (symbol == board[i, 0]) ? 1 : -1;

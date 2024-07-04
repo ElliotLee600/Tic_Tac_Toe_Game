@@ -48,19 +48,23 @@ namespace Tic_Tac_Toe_Game.Views
             if (this.EasyDiffBtn.Checked || this.MediumDiffBtn.Checked || this.HardDiffBtn.Checked) {
 
                 AI_MoveType moveType = null;
+                int delay = 100;
                 if (this.EasyDiffBtn.Checked)
                 {
                     moveType = new BasicAI_MoveType();
+                    delay = 20;
                 }
                 else if (this.MediumDiffBtn.Checked)
                 {
                     moveType = new MediumAI_MoveType();
+                    delay = 10;
                 }
                 else {
-                    moveType = new HardAI_MoveType(); 
+                    moveType = new HardAI_MoveType();
+                    delay = 5;
                 }
 
-                gameController.setComputerDifficulty(moveType);
+                gameController.setComputerDifficulty(moveType, delay);
                 Dispose();
                 return;
             }

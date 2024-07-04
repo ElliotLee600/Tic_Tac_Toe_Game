@@ -71,7 +71,7 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
             //Check for diagonal close matches
             if (board[0, 0] + board[1, 1] + board[2, 2] > 1)
             {
-                for (int i = 0; i <= 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     if (board[i, i] == 0)
                     {
@@ -82,7 +82,7 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
 
             if (board[2, 0] + board[1, 1] + board[0, 2] > 1)
             {
-                for (int i = 0; i <= 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     if (board[2 - i, i] == 0)
                     {

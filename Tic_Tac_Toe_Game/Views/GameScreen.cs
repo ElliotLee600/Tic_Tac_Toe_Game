@@ -29,7 +29,7 @@ namespace Tic_Tac_Toe_Game.Views
 
             Rectangle workingRect = Screen.PrimaryScreen.WorkingArea;
             //Setting up screen
-            this.MaximumSize = new Size(workingRect.Width * 3 / 4, workingRect.Height * 3 /4 );
+            this.MaximumSize = new Size(workingRect.Width * 3 / 4, workingRect.Height * 3 / 4);
             this.MinimumSize = new Size(workingRect.Width * 3 / 4, workingRect.Height * 3 / 4);
             this.CenterToScreen();
 
@@ -38,7 +38,7 @@ namespace Tic_Tac_Toe_Game.Views
 
             difficultySetBtn.MinimumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
             difficultySetBtn.MaximumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
-            difficultySetBtn.Location = new Point(screenWidth * 33/40, screenHeight * 2/20);
+            difficultySetBtn.Location = new Point(screenWidth * 33 / 40, screenHeight * 2 / 20);
             Image originalImage;
             default_resize = null;
             try
@@ -61,32 +61,35 @@ namespace Tic_Tac_Toe_Game.Views
                 x_image_resize = new Bitmap("Views/Sprites/ttt_grid_x.png");
                 o_image_resize = new Bitmap("Views/Sprites/ttt_grid_o.png");
             }
-            
+
 
             visualGrid = new PictureBox[3, 3];
             PictureBox temp;
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 3; i++)
+            {
                 for (int j = 0; j < 3; j++)
                 {
-                    temp =  new PictureBox();
-                    temp.Size = new Size(screenWidth/6, screenHeight/6);
+                    temp = new PictureBox();
+                    temp.Size = new Size(screenWidth / 6, screenHeight / 6);
                     temp.Location = new Point(screenWidth * (j + 1) / 6, screenHeight * (i + 1) / 6);
                     temp.Image = default_resize;
                     temp.Tag = new Move(i, j);
                     temp.Click += grid_Click;
                     temp.Parent = this;
                     visualGrid[i, j] = temp;
-                    
+
                 }
             }
         }
 
-        private void grid_Click(object sender, EventArgs e) {
+        private void grid_Click(object sender, EventArgs e)
+        {
             PictureBox pb = (PictureBox)sender;
             pb.Enabled = false;
             Move gridPos = (Move)pb.Tag;
             Boolean gridSuccess = gameController.processGridClick(gridPos);
-            if (!gridSuccess) {
+            if (!gridSuccess)
+            {
                 pb.Enabled = true;
             }
             //MessageBox.Show(gridPos.row + " " + gridPos.col);
@@ -109,9 +112,12 @@ namespace Tic_Tac_Toe_Game.Views
             difficultySetBtn.Enabled = true;
         }
 
-        public void updateGrid(int[,] board, int turn) {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
+        public void updateGrid(int[,] board, int turn)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
                     visualGrid[i, j].Enabled = false;
                     if (board[i, j] == 1)
                     {
@@ -121,15 +127,22 @@ namespace Tic_Tac_Toe_Game.Views
                     {
                         visualGrid[i, j].Image = o_image_resize;
                     }
-                    else {
+                    else
+                    {
                         visualGrid[i, j].Image = default_resize;
                         //visualGrid[i, j].Enabled = true;
-                        if (turn % 2 == 1) {
+                        if (turn % 2 == 1)
+                        {
                             visualGrid[i, j].Enabled = true;
                         }
                     }
                 }
             }
+        }
+
+        private void MainTimer_Tick(object sender, EventArgs e)
+        {
+            gameController.updateTick();
         }
     }
 }

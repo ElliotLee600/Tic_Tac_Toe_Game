@@ -8,7 +8,7 @@ using Tic_Tac_Toe_Game.Utils;
 
 namespace Tic_Tac_Toe_Game.Models
 {
-    public class Player
+    public class Player : ISubscriber
     {
         protected IMoveType moveType;
         protected int turnOrder; //1 means going first, 0 means going 2nd.
@@ -34,8 +34,16 @@ namespace Tic_Tac_Toe_Game.Models
             return active;
         }
 
+        public void setActive(bool active) {
+            return;
+        }
+
         public void setMoveType(IMoveType moveType) {
             this.moveType = moveType;
+        }
+
+        public Move getMove(int[,] board, int turn) {
+            return moveType.getMove(board, turn);
         }
     }
 }

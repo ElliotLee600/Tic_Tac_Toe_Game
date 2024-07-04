@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             difficultySetBtn = new Button();
+            MainTimer = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // difficultySetBtn
@@ -40,6 +42,12 @@
             difficultySetBtn.Text = "Set Difficulty";
             difficultySetBtn.UseVisualStyleBackColor = true;
             difficultySetBtn.Click += difficultySetBtn_Click;
+            // 
+            // MainTimer
+            // 
+            MainTimer.Enabled = true;
+            MainTimer.Interval = 50;
+            MainTimer.Tick += MainTimer_Tick;
             // 
             // GameScreen
             // 
@@ -56,5 +64,6 @@
         #endregion
 
         private Button difficultySetBtn;
+        private System.Windows.Forms.Timer MainTimer;
     }
 }

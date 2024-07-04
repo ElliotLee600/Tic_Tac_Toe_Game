@@ -63,8 +63,12 @@ namespace Tic_Tac_Toe_Game.Controls
             GameModel.getGameModel().resetGame();
         }
 
-        public void setComputerDifficulty(AI_MoveType moveType) {
-            GameModel.getGameModel().setOpponentMoveType(moveType);
+        public void updateTick() { 
+            GameModel.getGameModel().updateTick();
+        }
+
+        public void setComputerDifficulty(AI_MoveType moveType, int delay) {
+            GameModel.getGameModel().setOpponentMoveType(moveType, delay);
            //computerPlayer.setMoveType(moveType);
         }
     }

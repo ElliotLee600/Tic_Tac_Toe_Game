@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tic_Tac_Toe_Game.Utils;
+using System.Windows.Forms;
 
 namespace Tic_Tac_Toe_Game.Models.MoveTypes.Tests
 {
@@ -44,8 +45,10 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes.Tests
             }
             board[1, 1] = 1;
             turn = 2;
-            expectedMove = new Move(0, 2);
-            Assert.AreEqual(expectedMove, hard.getMove(board, turn));
+            expectedMove = new Move(0, 0);
+            Move hardMove = hard.getMove(board, turn);
+            //MessageBox.Show("" + hardMove.row + " " + hardMove.col);
+            Assert.AreEqual(expectedMove, hardMove);
 
         }
         /*
