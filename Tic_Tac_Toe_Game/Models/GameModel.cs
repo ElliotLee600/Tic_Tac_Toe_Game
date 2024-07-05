@@ -18,6 +18,7 @@ namespace Tic_Tac_Toe_Game.Models
     public class GameModel : IPublisher
     {
         private int[,] board; //1 means x, 0 means empty, -1 means 0.
+        private int[,] winloss;
         private int turn;
         private AI_MoveType opponentMoveType;
         private LinkedList<ISubscriber> subscribers;
@@ -26,8 +27,19 @@ namespace Tic_Tac_Toe_Game.Models
         Player player2;
         GameScreen gameScreen;
 
+
         private static GameModel gameModel;
         private static readonly Object syncLock = new Object();
+
+        private GameModel() {
+            winloss = new int[3, 3];
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++)
+                {
+                    winloss[i, j] = 0;
+                }
+            }
+        }
         public static GameModel getGameModel()
         {
             if (gameModel == null)
@@ -42,6 +54,10 @@ namespace Tic_Tac_Toe_Game.Models
 
             }
             return gameModel;
+        }
+
+        public int[,] getRecords() {
+            return winloss;
         }
 
         public void setGameScreen(GameScreen gs) {
@@ -76,18 +92,22 @@ namespace Tic_Tac_Toe_Game.Models
             int outcome = HardAI_MoveType.checkBoard(board, 1);
             if (outcome != 0 || turn > 9)
             {
+                int ai_ID = opponentMoveType.getID();
                 //temporary game end sequence
                 if (outcome == 0)
                 {
+                    winloss[ai_ID, 1] += 1;
                     MessageBox.Show("You drew!");
                 }
                 else if (outcome == 1)
                 {
+                    winloss[ai_ID, 0] += 1;
                     MessageBox.Show("You won!");
 
                 }
                 else
                 {
+                    winloss[ai_ID, 2] += 1;
                     MessageBox.Show("You lost!");
                 }
 

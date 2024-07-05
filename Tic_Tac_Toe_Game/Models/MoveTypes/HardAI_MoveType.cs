@@ -10,7 +10,7 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
 {
     public class HardAI_MoveType : AI_MoveType
     {
-        public const int HARD_ID = 1;
+        public const int HARD_ID = 2;
 
         
 

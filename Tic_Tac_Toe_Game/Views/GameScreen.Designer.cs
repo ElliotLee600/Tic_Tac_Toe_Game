@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             difficultySetBtn = new Button();
             MainTimer = new System.Windows.Forms.Timer(components);
+            RecordButton = new Button();
             SuspendLayout();
             // 
             // difficultySetBtn
@@ -49,11 +50,22 @@
             MainTimer.Interval = 50;
             MainTimer.Tick += MainTimer_Tick;
             // 
+            // RecordButton
+            // 
+            RecordButton.Location = new Point(649, 60);
+            RecordButton.Name = "RecordButton";
+            RecordButton.Size = new Size(125, 29);
+            RecordButton.TabIndex = 1;
+            RecordButton.Text = "Records";
+            RecordButton.UseVisualStyleBackColor = true;
+            RecordButton.Click += RecordButton_Click;
+            // 
             // GameScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(RecordButton);
             Controls.Add(difficultySetBtn);
             Name = "GameScreen";
             Text = "Tic-Tac-Toe Game Screen";
@@ -65,5 +77,6 @@
 
         private Button difficultySetBtn;
         private System.Windows.Forms.Timer MainTimer;
+        private Button RecordButton;
     }
 }

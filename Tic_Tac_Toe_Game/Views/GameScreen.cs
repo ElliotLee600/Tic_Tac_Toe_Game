@@ -39,6 +39,11 @@ namespace Tic_Tac_Toe_Game.Views
             difficultySetBtn.MinimumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
             difficultySetBtn.MaximumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
             difficultySetBtn.Location = new Point(screenWidth * 33 / 40, screenHeight * 2 / 20);
+
+            RecordButton.MinimumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
+            RecordButton.MaximumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
+            RecordButton.Location = new Point(screenWidth * 33 / 40, screenHeight * 4 / 20);
+
             Image originalImage;
             default_resize = null;
             try
@@ -143,6 +148,12 @@ namespace Tic_Tac_Toe_Game.Views
         private void MainTimer_Tick(object sender, EventArgs e)
         {
             gameController.updateTick();
+        }
+
+        private void RecordButton_Click(object sender, EventArgs e)
+        {
+            RecordScreen recordScreen = new RecordScreen();
+            recordScreen.ShowDialog();
         }
     }
 }
