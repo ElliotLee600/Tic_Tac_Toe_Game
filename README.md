@@ -1,2 +1,2 @@
 # Tic_Tac_Toe_Game
-This is currently a WIP, the UI is quite incomplete.
+This is currently a WIP, the UI still needs a little work.
