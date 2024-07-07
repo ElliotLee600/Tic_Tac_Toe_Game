@@ -32,6 +32,9 @@
             difficultySetBtn = new Button();
             MainTimer = new System.Windows.Forms.Timer(components);
             RecordButton = new Button();
+            gameEndLabel = new Label();
+            TurnLabel = new Label();
+            StartGameButton = new Button();
             SuspendLayout();
             // 
             // difficultySetBtn
@@ -60,17 +63,51 @@
             RecordButton.UseVisualStyleBackColor = true;
             RecordButton.Click += RecordButton_Click;
             // 
+            // gameEndLabel
+            // 
+            gameEndLabel.AutoSize = true;
+            gameEndLabel.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gameEndLabel.Location = new Point(189, 27);
+            gameEndLabel.Name = "gameEndLabel";
+            gameEndLabel.Size = new Size(117, 46);
+            gameEndLabel.TabIndex = 2;
+            gameEndLabel.Text = "label1";
+            // 
+            // TurnLabel
+            // 
+            TurnLabel.AutoSize = true;
+            TurnLabel.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TurnLabel.Location = new Point(208, 82);
+            TurnLabel.Name = "TurnLabel";
+            TurnLabel.Size = new Size(73, 31);
+            TurnLabel.TabIndex = 3;
+            TurnLabel.Text = "label1";
+            // 
+            // StartGameButton
+            // 
+            StartGameButton.Location = new Point(367, 362);
+            StartGameButton.Name = "StartGameButton";
+            StartGameButton.Size = new Size(94, 29);
+            StartGameButton.TabIndex = 4;
+            StartGameButton.Text = "Start Game";
+            StartGameButton.UseVisualStyleBackColor = true;
+            StartGameButton.Click += StartGameButton_Click;
+            // 
             // GameScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(StartGameButton);
+            Controls.Add(TurnLabel);
+            Controls.Add(gameEndLabel);
             Controls.Add(RecordButton);
             Controls.Add(difficultySetBtn);
             Name = "GameScreen";
             Text = "Tic-Tac-Toe Game Screen";
             Load += GameScreen_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -78,5 +115,8 @@
         private Button difficultySetBtn;
         private System.Windows.Forms.Timer MainTimer;
         private Button RecordButton;
+        private Label gameEndLabel;
+        private Label TurnLabel;
+        private Button StartGameButton;
     }
 }

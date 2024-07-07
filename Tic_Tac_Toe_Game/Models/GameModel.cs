@@ -39,6 +39,8 @@ namespace Tic_Tac_Toe_Game.Models
                     winloss[i, j] = 0;
                 }
             }
+            opponentMoveType = new MediumAI_MoveType();
+
         }
         public static GameModel getGameModel()
         {
@@ -66,7 +68,6 @@ namespace Tic_Tac_Toe_Game.Models
 
         public void resetGame() {
             subscribers = new LinkedList<ISubscriber>();
-            opponentMoveType = new MediumAI_MoveType();
             computerDelay = 10;
             computerCounter = -1;
             board = new int[3, 3];
@@ -97,21 +98,21 @@ namespace Tic_Tac_Toe_Game.Models
                 if (outcome == 0)
                 {
                     winloss[ai_ID, 1] += 1;
-                    MessageBox.Show("You drew!");
+                    gameScreen.endGameDefaults("You Drew!");
                 }
                 else if (outcome == 1)
                 {
                     winloss[ai_ID, 0] += 1;
-                    MessageBox.Show("You won!");
+                    gameScreen.endGameDefaults("You Won!");
 
                 }
                 else
                 {
                     winloss[ai_ID, 2] += 1;
-                    MessageBox.Show("You lost!");
+                    gameScreen.endGameDefaults("You Lost!");
                 }
 
-                resetGame();
+                //resetGame();
                 return true;
             }
             return false;
@@ -121,6 +122,7 @@ namespace Tic_Tac_Toe_Game.Models
             if (board[boardPos.row, boardPos.col] == 0) {
                 board[boardPos.row, boardPos.col] = (turn % 2 == 1) ? 1 : -1;
                 gameScreen.updateGrid(board, ++turn);
+                gameScreen.updateTurnLabel(turn);
                 //player2.setActive(true);
                 if (winSequence()) {
                     return true;
@@ -144,8 +146,8 @@ namespace Tic_Tac_Toe_Game.Models
                 computerCounter = -1;
                 Move cMove = opponentMoveType.getMove(board, turn);
                 board[cMove.row, cMove.col] = -1;
-                turn++;
-                gameScreen.updateGrid(board, turn);
+                gameScreen.updateGrid(board, ++turn);
+                gameScreen.updateTurnLabel(turn);
                 winSequence();
             }
         }

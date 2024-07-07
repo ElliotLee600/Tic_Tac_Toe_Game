@@ -20,6 +20,7 @@ namespace Tic_Tac_Toe_Game.Views
         Bitmap default_resize;
         Bitmap x_image_resize;
         Bitmap o_image_resize;
+        bool gameActive;
         public GameScreen()
         {
             InitializeComponent();
@@ -39,10 +40,28 @@ namespace Tic_Tac_Toe_Game.Views
             difficultySetBtn.MinimumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
             difficultySetBtn.MaximumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
             difficultySetBtn.Location = new Point(screenWidth * 33 / 40, screenHeight * 2 / 20);
+            difficultySetBtn.Enabled = true;
 
             RecordButton.MinimumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
             RecordButton.MaximumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
             RecordButton.Location = new Point(screenWidth * 33 / 40, screenHeight * 4 / 20);
+
+            StartGameButton.MinimumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
+            StartGameButton.MaximumSize = new Size(workingRect.Width / 10, workingRect.Height / 15);
+            StartGameButton.Location = new Point(screenWidth * 4 / 10, screenHeight * 31 / 40);
+            StartGameButton.Enabled = true;
+
+            TurnLabel.MinimumSize = new Size(screenWidth / 10, screenHeight / 10);
+            TurnLabel.MaximumSize = new Size(screenWidth / 10, screenHeight / 10);
+            TurnLabel.Location = new Point(screenWidth * 35 / 80, screenHeight / 9);
+            TurnLabel.Visible = false;
+
+            gameEndLabel.MinimumSize = new Size(screenWidth / 4, screenHeight / 10);
+            gameEndLabel.MaximumSize = new Size(screenWidth / 4, screenHeight / 10);
+            gameEndLabel.Location = new Point(screenWidth * 33 / 80, screenHeight / 40);
+            gameEndLabel.Visible = false;
+
+            gameActive = false;
 
             Image originalImage;
             default_resize = null;
@@ -76,7 +95,7 @@ namespace Tic_Tac_Toe_Game.Views
                 {
                     temp = new PictureBox();
                     temp.Size = new Size(screenWidth / 6, screenHeight / 6);
-                    temp.Location = new Point(screenWidth * (j + 1) / 6, screenHeight * (i + 1) / 6);
+                    temp.Location = new Point(screenWidth / 20 + screenWidth * (j + 1) / 6, screenHeight * (i + 1) / 6 + screenHeight / 20);
                     temp.Image = default_resize;
                     temp.Tag = new Move(i, j);
                     temp.Click += grid_Click;
@@ -89,6 +108,9 @@ namespace Tic_Tac_Toe_Game.Views
 
         private void grid_Click(object sender, EventArgs e)
         {
+            if (!gameActive) {
+                return;
+            }
             PictureBox pb = (PictureBox)sender;
             pb.Enabled = false;
             Move gridPos = (Move)pb.Tag;
@@ -108,13 +130,20 @@ namespace Tic_Tac_Toe_Game.Views
         private void GameScreen_Load(object sender, EventArgs e)
         {
             gameController = GameController.getGameController();
-            setDefaults();
+            gameController.resetGame();
+            //setDefaults();
         }
 
-        private void setDefaults()
+        public void endGameDefaults(String endText)
         {
-            gameController.resetGame();
+            gameActive = false;
             difficultySetBtn.Enabled = true;
+            StartGameButton.Enabled = true;
+            RecordButton.Enabled = true;
+            gameEndLabel.Visible = true;
+            gameEndLabel.Text = endText;
+            TurnLabel.Visible = false;
+
         }
 
         public void updateGrid(int[,] board, int turn)
@@ -145,6 +174,10 @@ namespace Tic_Tac_Toe_Game.Views
             }
         }
 
+        public void updateTurnLabel(int turn) {
+            TurnLabel.Text = "Turn " + turn;
+        }
+
         private void MainTimer_Tick(object sender, EventArgs e)
         {
             gameController.updateTick();
@@ -154,6 +187,18 @@ namespace Tic_Tac_Toe_Game.Views
         {
             RecordScreen recordScreen = new RecordScreen();
             recordScreen.ShowDialog();
+        }
+
+        private void StartGameButton_Click(object sender, EventArgs e)
+        {
+            StartGameButton.Enabled = false;
+            difficultySetBtn.Enabled = false;
+            gameEndLabel.Visible = false;
+            RecordButton.Enabled = false;
+            TurnLabel.Visible = true;
+            updateTurnLabel(1);
+            gameController.resetGame();
+            gameActive = true;
         }
     }
 }
