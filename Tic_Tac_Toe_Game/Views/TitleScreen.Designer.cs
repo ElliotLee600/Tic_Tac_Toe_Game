@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             playButton = new Button();
+            TitleScreenText = new Label();
             SuspendLayout();
             // 
             // playButton
@@ -41,20 +42,33 @@
             playButton.UseVisualStyleBackColor = true;
             playButton.Click += playButton_Click;
             // 
+            // TitleScreenText
+            // 
+            TitleScreenText.AutoSize = true;
+            TitleScreenText.Font = new Font("Viner Hand ITC", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TitleScreenText.Location = new Point(205, 97);
+            TitleScreenText.Name = "TitleScreenText";
+            TitleScreenText.Size = new Size(351, 97);
+            TitleScreenText.TabIndex = 1;
+            TitleScreenText.Text = "Tic Tac Toe";
+            // 
             // TitleScreen
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(TitleScreenText);
             Controls.Add(playButton);
             Name = "TitleScreen";
             Text = "Tic-Tac-Toe Title Screen";
             Load += TitleScreen_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button playButton;
+        private Label TitleScreenText;
     }
 }

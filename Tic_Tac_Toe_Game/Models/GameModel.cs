@@ -40,6 +40,7 @@ namespace Tic_Tac_Toe_Game.Models
                 }
             }
             opponentMoveType = new MediumAI_MoveType();
+            computerDelay = 10;
 
         }
         public static GameModel getGameModel()
@@ -68,7 +69,6 @@ namespace Tic_Tac_Toe_Game.Models
 
         public void resetGame() {
             subscribers = new LinkedList<ISubscriber>();
-            computerDelay = 10;
             computerCounter = -1;
             board = new int[3, 3];
             for (int i = 0; i < 3; i++) {
