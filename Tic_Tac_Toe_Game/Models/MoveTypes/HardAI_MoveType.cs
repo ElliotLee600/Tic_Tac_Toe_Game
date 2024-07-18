@@ -12,6 +12,8 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
     {
         public const int HARD_ID = 2;
 
+        public int leafStates; //for testing purposes
+
         
 
         public override Move getMove(int[,] board, int turn)
@@ -21,19 +23,26 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
             int currentMax = -10;
             int temp;
             int symbol = (turn % 2 == 1) ? 1 : -1;
+            int alpha = -10;
+            int beta = 10;
+            leafStates = 0;
             //MessageBox.Show("sym:"+symbol);
             foreach (Move m in moves)
             {
-                temp = minimax_min(simulateMove(board, m.row, m.col, symbol), symbol * -1, turn + 1);
+                temp = minimax_min(simulateMove(board, m.row, m.col, symbol), symbol * -1, turn + 1, alpha, beta);
                 if (temp > currentMax)
                 {
                     currentMax = temp;
                     curMove = m;
                     
                 }
+                if (temp > alpha)
+                {
+                    alpha = temp;
+                }
                 //MessageBox.Show(temp + "/ row: " + m.row + "/ col: " + m.col);
             }
-
+            //MessageBox.Show("Leafstates expanded: " + leafStates);
             return curMove;
         }
         public override int getID()
@@ -82,46 +91,63 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes
 
         }
 
-        public int minimax_min(int[,] board, int symbol, int turn) {
+        public int minimax_min(int[,] board, int symbol, int turn, int alpha, int beta) {
             int eval = checkBoard(board, symbol * -1); //-1 is so board is evaluated from starting player's perspective
             if (eval != 0) {
+                leafStates++;
                 return eval; //nonzero eval means game should be over, regardless of how full board is.
             }
             int currentMin = 10;
             int temp;
             Move[] moves = possibleMoves(board, turn);
             if (moves == null) {
+                leafStates++;
                 return eval;
             }
             foreach (Move m in moves) {
-                temp = minimax_max(simulateMove(board, m.row, m.col, symbol), symbol * -1, turn + 1);
+                temp = minimax_max(simulateMove(board, m.row, m.col, symbol), symbol * -1, turn + 1, alpha, beta);
                 if (temp < currentMin) {
                     currentMin = temp;
+                }
+                if (temp < alpha) {
+                    //MessageBox.Show("MinBranch skipped due to value: " + temp + " and alpha: " + alpha);
+                    break;
+                }
+                if (temp < beta) {
+                    beta = temp;
                 }
             }
             return currentMin;
         }
 
-        public int minimax_max(int[,] board, int symbol, int turn)
+        public int minimax_max(int[,] board, int symbol, int turn, int alpha, int beta)
         {
             int currentMax = -10;
             int temp;
             int eval = checkBoard(board, symbol);
             if (eval != 0)
             {
+                leafStates++;
                 return eval; //nonzero eval means game should be over, regardless of how full board is.
             }
             Move[] moves = possibleMoves(board, turn);
             if (moves == null)
             {
+                leafStates++;
                 return eval;
             }
             foreach (Move m in moves)
             {
-                temp = minimax_min(simulateMove(board, m.row, m.col, symbol), symbol * -1, turn + 1);
+                temp = minimax_min(simulateMove(board, m.row, m.col, symbol), symbol * -1, turn + 1, alpha, beta);
                 if (temp > currentMax)
                 {
                     currentMax = temp;
+                }
+                if (temp > beta) {
+                    break;
+                }
+                if (temp > alpha) {
+                    alpha = temp;
                 }
             }
             return currentMax;

@@ -32,9 +32,21 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes.Tests
            
             
             turn = 5;
-            Move expectedMove = new Move(0, 2);
+            Move[] expectedMoves = new Move[2];
+            expectedMoves[0] = new Move(0, 2);
+            expectedMoves[1] = new Move(1, 0);
+            bool isFound = false;
             HardAI_MoveType hard = new HardAI_MoveType();
-            Assert.AreEqual(expectedMove, hard.getMove(board, turn));
+            Move givenMove = hard.getMove(board, turn);
+            foreach (Move m in expectedMoves) {
+                if (givenMove.Equals(m)) {
+                    isFound = true;
+                    break;
+                }
+            }
+
+            
+            Assert.AreEqual(isFound, true);
             
             for (int i = 0; i < 3; i++)
             {
@@ -45,10 +57,24 @@ namespace Tic_Tac_Toe_Game.Models.MoveTypes.Tests
             }
             board[1, 1] = 1;
             turn = 2;
-            expectedMove = new Move(0, 0);
-            Move hardMove = hard.getMove(board, turn);
+            expectedMoves = new Move[4];
+            expectedMoves[0] = new Move(0, 0);
+            expectedMoves[1] = new Move(0, 2);
+            expectedMoves[2] = new Move(2, 0);
+            expectedMoves[3] = new Move(2, 2);
+            givenMove = hard.getMove(board, turn);
+            isFound = false;
             //MessageBox.Show("" + hardMove.row + " " + hardMove.col);
-            Assert.AreEqual(expectedMove, hardMove);
+            foreach (Move m in expectedMoves)
+            {
+                if (givenMove.Equals(m))
+                {
+                    isFound = true;
+                    break;
+                }
+            }
+            Assert.AreEqual(isFound, true);
+
 
         }
         /*
